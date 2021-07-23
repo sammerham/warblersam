@@ -9,13 +9,12 @@ from models import db, connect_db, User, Message, LikedMessage
 
 CURR_USER_KEY = "curr_user"
 
-app = Flask(__name__)
 
 # Get DB_URI from environ variable (useful for production/testing) or,
 # if not set there, use development local db.
 database_url = os.environ.get('DATABASE_URL', 'postgresql:///warbler')
 database_url = database_url.replace('postgres://', 'postgresql://')
-
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
